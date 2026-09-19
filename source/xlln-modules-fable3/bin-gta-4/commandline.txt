@@ -1,0 +1,3 @@
+-nomemrestrict
+-norestrictions
+-windowed

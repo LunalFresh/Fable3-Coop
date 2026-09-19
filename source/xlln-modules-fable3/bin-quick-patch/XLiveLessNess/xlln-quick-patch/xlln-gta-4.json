@@ -1,0 +1,28 @@
+//# Grand Theft Auto 4
+//- Enables running multiple instances of the Title concurrently.
+[
+	// `GTAIV.exe` version 10000D83 Patch 7.
+	{
+		"titleSha256": "ab21c0d90d2ca1c697785aca9dcf44635e1f8d48aa0df1d737e9190bddf0cb4c",
+		"binaryPatches": [
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00a2cd6c,
+				// Null terminate the mutex name ("GTANY-088FA840-B10D-11D3-BC36-006067709674") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `GTAIV.exe` version 10000E83 Patch 8.
+	{
+		"titleSha256": "3d90e7c516fa450ca002e5031e62c0f66b404590f33e6cc9793b0da4fffbfd0f",
+		"binaryPatches": [
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00a71624,
+				// Null terminate the mutex name ("GTANY-088FA840-B10D-11D3-BC36-006067709674") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+]

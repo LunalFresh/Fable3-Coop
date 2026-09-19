@@ -1,0 +1,46 @@
+build:
+  stage: build
+  image: registry.gitlab.com/superewald/llwin:16-debug
+  variables:
+    CPM_SOURCE_CACHE: .cache/cpm
+    DXSDK_CACHE: $CPM_SOURCE_CACHE/dxsdk-jun10-source
+    DXSDK_DIR: $DXSDK_CACHE/DXSDK
+  parallel:
+    matrix:
+      - CMAKE_BUILD_TYPE:
+        - Debug
+        - Release
+  before_script:
+    # fix wrong filename case for opus (since unix filenames are case sensitive)
+    - |
+      intsafe_header=$(find -L /opt/llwin/win/current/sysroot -type f -name 'intsafe.h' -print -quit)
+      ln -s "$intsafe_header" "$(echo "$intsafe_header" | sed 's/intsafe\.h/Intsafe\.h/g')"
+    # fetch DirectX SDK
+    - |
+      if [ ! -d "$DXSDK_DIR" ]; then
+        apk add --no-cache 7zip
+        mkdir -p $DXSDK_CACHE
+        curl --output $DXSDK_CACHE/DXSDK_Jun10.exe https://download.microsoft.com/download/A/E/7/AE743F1F-632B-4809-87A9-AA1BB3458E31/DXSDK_Jun10.exe
+        7z x $DXSDK_CACHE/DXSDK_Jun10.exe -o$DXSDK_CACHE DXSDK/Include DXSDK/Lib
+        rm $DXSDK_CACHE/DXSDK_Jun10.exe
+      fi
+  script:
+    - wmake -B build/$CMAKE_BUILD_TYPE -A Win32
+    - cmake --build build/$CMAKE_BUILD_TYPE -j$(nproc)
+  artifacts:
+    name: xlivelessness-$CMAKE_BUILD_TYPE-$CI_COMMIT_SHA
+    paths:
+      - bin/xlive.dll
+      - bin/xlive.lib
+      - bin/xlive.pdb
+  cache:
+    key:
+      files:
+        - cmake/packages.cmake
+        - cmake/FindDirectXSDK.cmake
+      prefix: $CI_JOB_NAME
+    paths:
+      - .cache/cpm
+      - build/$CMAKE_BUILD_TYPE/_deps/*-build
+      - build/$CMAKE_BUILD_TYPE/CPM_modules
+      - build/$CMAKE_BUILD_TYPE/cpm-package-lock.cmake

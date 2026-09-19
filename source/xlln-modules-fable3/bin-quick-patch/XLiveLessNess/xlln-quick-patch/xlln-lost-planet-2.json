@@ -1,0 +1,149 @@
+//# Lost Planet 2
+//- Enables running Title from main executable (`LP2DX9.exe` / `LP2DX11.exe`) rather than only via the launcher (`Launcher.exe`).
+//- Enables running multiple instances of the Title concurrently.
+[
+	// `LP2DX9.exe` version 10000084 Shipped.
+	{
+		"titleSha256": "2995e8f7a729379b6639c5d88ccfe10576a79b3b6cf079d2d38a551dbda45d32",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003bd8cc,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f68390,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `LP2DX11.exe` version 10000084 Shipped.
+	{
+		"titleSha256": "6bc37592c543e4353e284cb5bf1b9717f1d56816440d32a9b787334e228d55f4",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003cc78c,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f78b64,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `LP2DX9.exe` version 10000085 Shipped.
+	{
+		"titleSha256": "f5796154d473b441752213fec6f9baae86c8978dfc6b6a5a7fb11e2e2bcd6a18",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003bd8cc,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f68390,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `LP2DX11.exe` version 10000085 Shipped.
+	{
+		"titleSha256": "6ad98e093a2c2bf90f5df8d6bb95c3da451cd2aa367f724ff10e0f3a1be53d34",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003cc78c,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f78b64,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `LP2DX9.exe` version 10000182 / 10000184 Patch 1.
+	{
+		"titleSha256": "0a6c6c0226ed0fdacf167d4d53c0e1683db458d43cc5e480dcbf57b49a4495dc",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003bda0c,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f68ba8,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `LP2DX11.exe` version 10000182 / 10000184 Patch 1.
+	{
+		"titleSha256": "a84df498e31cde0d2c5bd1ab3584d90bd0b5d0882039a41e9ba26061585c7b44",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003cc85c,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f79164,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `LP2DX9.exe` version 10000183 / 10000185 / 10000285 Patch 1/2.
+	{
+		"titleSha256": "13fb6b11b4e8bb3bea0dfe442ae2fc465c79360f1527479212dca0d6ef66e303",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003bda0c,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f68ba8,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+	// `LP2DX11.exe` version 10000183 / 10000185 / 10000285 Patch 1/2.
+	{
+		"titleSha256": "407b91378207491dc322612725fcca5f29b0dbe97d34ca1c9eeea1d7955a343c",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x003cc85c,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x00f79164,
+				// Null terminate the mutex name ("sPlanetMain") to 0 length.
+				"patchData" : [0x00],
+			},
+		],
+	},
+]

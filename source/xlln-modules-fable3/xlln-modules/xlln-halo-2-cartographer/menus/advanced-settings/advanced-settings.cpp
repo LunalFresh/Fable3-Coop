@@ -1,0 +1,111 @@
+#include "../../../dllmain.hpp"
+#include "../../xlln-module.hpp"
+#include "advanced-settings.hpp"
+#include "../custom-menu-functions.hpp"
+#include "../../language/custom-labels.hpp"
+#include "../../language/custom-language.hpp"
+#include "language/language-main.hpp"
+#include "hud-gui/hud-gui.hpp"
+#include "adv-other/adv-other.hpp"
+#include "adv-controls/adv-controls.hpp"
+#include "adv-lobby/adv-lobby.hpp"
+#include "toggle-skulls.hpp"
+#include "change-bsp.hpp"
+#include "change-difficulty.hpp"
+#include "coop-mode.hpp"
+#include "../../coop/coop.hpp"
+#include "../error/error.hpp"
+
+static void __fastcall c_list_widget_label_buttons(DWORD _ECX, DWORD _EDX, int a1, int a2)
+{
+	int(__thiscall *sub_211909)(int, int, int, int) = (int(__thiscall*)(int, int, int, int))(GetOffsetAddress(CLIENT_11122, 0x00211909));
+
+	__int16 button_id = *(WORD*)(a1 + 112);
+	int v3 = sub_211909(a1, 6, 0, 0);
+	if (v3) {
+		sub_21bf85_CMLTD(v3, button_id + 1, CMLabelMenuId_AdvSettings);
+	}
+}
+
+static int __fastcall widget_title_description(int a1, DWORD _EDX, char a2)
+{
+	return sub_2111ab_CMLTD(a1, a2, CMLabelMenuId_AdvSettings, 0xFFFFFFF0, 0xFFFFFFF1);
+}
+
+static int __fastcall widget_button_handler(void *thisptr, DWORD _EDX, int a2, DWORD *a3)
+{
+	unsigned __int16 button_id = *a3 & 0xFFFF;
+	
+	switch (button_id) {
+		case 0: {
+			CustomMenuCall_LanguageMain();
+			break;
+		}
+		case 1: {
+			CustomMenuCall_EditHudGui();
+			break;
+		}
+		case 2: {
+			CustomMenuCall_AdvControlsSettings();
+			break;
+		}
+		case 3: {
+			CustomMenuCall_AdvOtherSettings();
+			break;
+		}
+		case 4: {
+			CustomMenuCall_ToggleSkulls();
+			break;
+		}
+		case 5: {
+			CustomMenuCall_ChangeBsp();
+			break;
+		}
+		case 6: {
+			CustomMenuCall_ChangeDifficulty();
+			break;
+		}
+		case 7: {
+			CustomMenuCall_CoopMode();
+			break;
+		}
+		case 8: {
+			CustomMenuCall_AdvLobbySettings();
+			break;
+		}
+		default: {
+			CustomMenuCall_Error_Inner(CMLabelMenuId_Error, 1, 2);
+			break;
+		}
+	}
+
+	return CM_PressButtonAnimation(thisptr);
+}
+
+static int __fastcall widget_preselected_button(DWORD a1, DWORD _EDX)
+{
+	return sub_20F790_CM(a1, 0);//selected button id
+}
+
+static DWORD* menu_vftable_1 = 0;
+static DWORD* menu_vftable_2 = 0;
+
+static int __cdecl widget_call_head(int a1)
+{
+	return CustomMenu_CallHead(a1, menu_vftable_1, menu_vftable_2, (DWORD)widget_button_handler, 9, 272);
+}
+
+static int(__cdecl *widget_function_ptr_helper())(int)
+{
+	return widget_call_head;
+}
+
+void CMSetupVFTables_AdvSettings()
+{
+	CMSetupVFTables(&menu_vftable_1, &menu_vftable_2, (DWORD)c_list_widget_label_buttons, (DWORD)widget_title_description, (DWORD)widget_function_ptr_helper, (DWORD)widget_preselected_button, true, 0);
+}
+
+void CustomMenuCall_AdvSettings()
+{
+	CallWidget(widget_call_head);
+}

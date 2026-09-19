@@ -1,0 +1,15 @@
+{
+  "xlivelessness": {
+    "upstream_base_commit": "e8bbace3efc3710656b306b82845685315b1b5aa",
+    "exported_files": 129,
+    "modified_working_tree": true,
+    "export_note": "The overlay test uses documentation address 198.51.100.20 instead of a development LAN address. Runtime source is unchanged.",
+    "gitignore_export_note": "Explicit exceptions retain the shipped bin directory property/source files when adding this snapshot to a new Git repository."
+  },
+  "xlln-modules-fable3": {
+    "upstream_base_commit": "e7dd67a6c2611315c21d36ad17694dc0c50170a2",
+    "exported_files": 272,
+    "modified_working_tree": true,
+    "gitignore_export_note": "Explicit exceptions retain the shipped bin directory property/source files when adding this snapshot to a new Git repository."
+  }
+}

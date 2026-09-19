@@ -1,0 +1,26 @@
+//# XLLN-Quick-Patch Example Configuration
+//This is an example entry that is documented with some additional information about each setting / option.
+[
+	// This is an example of a Title Patch Entry.
+	{
+		// This checksum must match the loaded Title in order to activate this config
+		// The checksum generated is SHA-256 but if only the IMAGE_FILE_LARGE_ADDRESS_AWARE flag on the PE is activated then the checksum generated will be the same checksum as the original unmodified PE.
+		"titleSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+		// Write NOP instructions between the file offsets specified.
+		"binaryNopRangePatches": [
+			// [beginning, end],
+			
+			[0x00001000, 0x00002000],
+		],
+		// Write the patchData to the file offset specified.
+		"binaryPatches": [
+			{
+				"patchOffset" : 0x00002090,
+				// This array only accepts items that can be directly parsed as an 8 bit integer. So not a 1 letter char in quotes.
+				//JMP 0
+				//NOP NOP NOP
+				"patchData" : [0xeb,0xfe, 0x90,0x90,0x90],
+			},
+		],
+	},
+]

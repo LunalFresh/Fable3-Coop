@@ -1,0 +1,84 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-universe-at-war-earth-assault", "xlln-modules\xlln-universe-at-war-earth-assault\xlln-universe-at-war-earth-assault.vcxproj", "{F96DBB58-E83A-48C3-8B4E-0F572CD0560A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-shadowrun", "xlln-modules\xlln-shadowrun\xlln-shadowrun.vcxproj", "{A8E493B7-E98C-4E6F-82A2-F02776A0151D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-network-adapter", "xlln-modules\xlln-network-adapter\xlln-network-adapter.vcxproj", "{9CAD3AD0-44BF-460E-8CA4-C6D3CC7691C2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-halo-2-cartographer", "xlln-modules\xlln-halo-2-cartographer\xlln-halo-2-cartographer.vcxproj", "{49BB7DD1-11C1-463F-8599-FBCC364EAEEA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-halo-2", "xlln-modules\xlln-halo-2\xlln-halo-2.vcxproj", "{18AC4A90-C572-4632-A4CA-942679450A73}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-gears-of-war", "xlln-modules\xlln-gears-of-war\xlln-gears-of-war.vcxproj", "{C8D291FB-5218-4E88-B758-FA9F89FF1D65}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-warturd", "xlln-modules\xlln-warturd\xlln-warturd.vcxproj", "{8417BD88-38DF-4399-866E-96ECA43716E5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-fuel", "xlln-modules\xlln-fuel\xlln-fuel.vcxproj", "{AB3C57D2-DD16-4283-8078-DA837A9E20BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-upnp", "xlln-modules\xlln-upnp\xlln-upnp.vcxproj", "{9EDD16BE-56A7-4D4B-932F-D0BA688DDDCD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-quick-patch", "xlln-modules\xlln-quick-patch\xlln-quick-patch.vcxproj", "{D0460362-995D-4F93-9B7C-986090C70C27}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xlln-fable-3", "xlln-modules\xlln-fable-3\xlln-fable-3.vcxproj", "{2D37A6C6-A486-408D-B8A7-1378D5EF70D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F96DBB58-E83A-48C3-8B4E-0F572CD0560A}.Debug|x86.ActiveCfg = Debug|Win32
+		{F96DBB58-E83A-48C3-8B4E-0F572CD0560A}.Debug|x86.Build.0 = Debug|Win32
+		{F96DBB58-E83A-48C3-8B4E-0F572CD0560A}.Release|x86.ActiveCfg = Release|Win32
+		{F96DBB58-E83A-48C3-8B4E-0F572CD0560A}.Release|x86.Build.0 = Release|Win32
+		{A8E493B7-E98C-4E6F-82A2-F02776A0151D}.Debug|x86.ActiveCfg = Debug|Win32
+		{A8E493B7-E98C-4E6F-82A2-F02776A0151D}.Debug|x86.Build.0 = Debug|Win32
+		{A8E493B7-E98C-4E6F-82A2-F02776A0151D}.Release|x86.ActiveCfg = Release|Win32
+		{A8E493B7-E98C-4E6F-82A2-F02776A0151D}.Release|x86.Build.0 = Release|Win32
+		{9CAD3AD0-44BF-460E-8CA4-C6D3CC7691C2}.Debug|x86.ActiveCfg = Debug|Win32
+		{9CAD3AD0-44BF-460E-8CA4-C6D3CC7691C2}.Debug|x86.Build.0 = Debug|Win32
+		{9CAD3AD0-44BF-460E-8CA4-C6D3CC7691C2}.Release|x86.ActiveCfg = Release|Win32
+		{9CAD3AD0-44BF-460E-8CA4-C6D3CC7691C2}.Release|x86.Build.0 = Release|Win32
+		{49BB7DD1-11C1-463F-8599-FBCC364EAEEA}.Debug|x86.ActiveCfg = Debug|Win32
+		{49BB7DD1-11C1-463F-8599-FBCC364EAEEA}.Debug|x86.Build.0 = Debug|Win32
+		{49BB7DD1-11C1-463F-8599-FBCC364EAEEA}.Release|x86.ActiveCfg = Release|Win32
+		{49BB7DD1-11C1-463F-8599-FBCC364EAEEA}.Release|x86.Build.0 = Release|Win32
+		{18AC4A90-C572-4632-A4CA-942679450A73}.Debug|x86.ActiveCfg = Debug|Win32
+		{18AC4A90-C572-4632-A4CA-942679450A73}.Debug|x86.Build.0 = Debug|Win32
+		{18AC4A90-C572-4632-A4CA-942679450A73}.Release|x86.ActiveCfg = Release|Win32
+		{18AC4A90-C572-4632-A4CA-942679450A73}.Release|x86.Build.0 = Release|Win32
+		{C8D291FB-5218-4E88-B758-FA9F89FF1D65}.Debug|x86.ActiveCfg = Debug|Win32
+		{C8D291FB-5218-4E88-B758-FA9F89FF1D65}.Debug|x86.Build.0 = Debug|Win32
+		{C8D291FB-5218-4E88-B758-FA9F89FF1D65}.Release|x86.ActiveCfg = Release|Win32
+		{C8D291FB-5218-4E88-B758-FA9F89FF1D65}.Release|x86.Build.0 = Release|Win32
+		{8417BD88-38DF-4399-866E-96ECA43716E5}.Debug|x86.ActiveCfg = Debug|Win32
+		{8417BD88-38DF-4399-866E-96ECA43716E5}.Debug|x86.Build.0 = Debug|Win32
+		{8417BD88-38DF-4399-866E-96ECA43716E5}.Release|x86.ActiveCfg = Release|Win32
+		{8417BD88-38DF-4399-866E-96ECA43716E5}.Release|x86.Build.0 = Release|Win32
+		{AB3C57D2-DD16-4283-8078-DA837A9E20BA}.Debug|x86.ActiveCfg = Debug|Win32
+		{AB3C57D2-DD16-4283-8078-DA837A9E20BA}.Debug|x86.Build.0 = Debug|Win32
+		{AB3C57D2-DD16-4283-8078-DA837A9E20BA}.Release|x86.ActiveCfg = Release|Win32
+		{AB3C57D2-DD16-4283-8078-DA837A9E20BA}.Release|x86.Build.0 = Release|Win32
+		{9EDD16BE-56A7-4D4B-932F-D0BA688DDDCD}.Debug|x86.ActiveCfg = Debug|Win32
+		{9EDD16BE-56A7-4D4B-932F-D0BA688DDDCD}.Debug|x86.Build.0 = Debug|Win32
+		{9EDD16BE-56A7-4D4B-932F-D0BA688DDDCD}.Release|x86.ActiveCfg = Release|Win32
+		{9EDD16BE-56A7-4D4B-932F-D0BA688DDDCD}.Release|x86.Build.0 = Release|Win32
+		{D0460362-995D-4F93-9B7C-986090C70C27}.Debug|x86.ActiveCfg = Debug|Win32
+		{D0460362-995D-4F93-9B7C-986090C70C27}.Debug|x86.Build.0 = Debug|Win32
+		{D0460362-995D-4F93-9B7C-986090C70C27}.Release|x86.ActiveCfg = Release|Win32
+		{D0460362-995D-4F93-9B7C-986090C70C27}.Release|x86.Build.0 = Release|Win32
+		{2D37A6C6-A486-408D-B8A7-1378D5EF70D4}.Debug|x86.ActiveCfg = Debug|Win32
+		{2D37A6C6-A486-408D-B8A7-1378D5EF70D4}.Debug|x86.Build.0 = Debug|Win32
+		{2D37A6C6-A486-408D-B8A7-1378D5EF70D4}.Release|x86.ActiveCfg = Release|Win32
+		{2D37A6C6-A486-408D-B8A7-1378D5EF70D4}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {394448FD-24F4-4768-B151-B7A4A63DE95C}
+	EndGlobalSection
+EndGlobal

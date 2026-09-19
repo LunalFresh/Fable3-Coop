@@ -1,0 +1,28 @@
+//# Viva Pinata
+//- Enables running Title from main executable (`Viva Pinata.exe`) rather than only via the launcher (`Startup.exe`).
+[
+	// `Viva Pinata.exe` version 10015681 Shipped.
+	{
+		"titleSha256": "0a619346e491544b60b92cbc953ac34ebe7c103ddcf35eb16b63c6a72a2e9513",
+		"binaryNopRangePatches": [
+			// [beginning, end],
+			
+			// NOP function calls out that checks if the launcher is running.
+			[0x004c1c5d, 0x004c1c77],
+		],
+		"binaryPatches": [
+			// Allow multiple instances by always jumping instead of conditional jump if it does not find existing window with same name.
+			// Does not work, it tries to boot but freezes before intro can be played.
+			//{
+			//	"patchOffset" : 0x004c1c1b,
+			//	//JMP X
+			//	"patchData" : [0xeb],
+			//},
+			//{
+			//	"patchOffset" : 0x004c16c7,
+			//	//JMP X
+			//	"patchData" : [0xeb],
+			//},
+		],
+	},
+]

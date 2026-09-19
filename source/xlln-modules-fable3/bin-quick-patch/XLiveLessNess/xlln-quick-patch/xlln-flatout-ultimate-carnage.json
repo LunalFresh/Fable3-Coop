@@ -1,0 +1,22 @@
+//# FlatOut Ultimate Carnage
+//- Enables running Title from main executable (`Fouc.exe`) rather than only via the launcher (`launcher.exe`).
+[
+	// `Fouc.exe` version 10000084 Shipped.
+	{
+		"titleSha256": "faf3dfb0f6d408963a30b8059fede248bd63900f4e2aeee7b54cec6a9d9643e9",
+		"binaryNopRangePatches": [
+			// [beginning, end],
+			
+			// NOP out the code that tries to establish an interprocess connection to the Launcher.
+			[0x0015b538, 0x0015b55d],
+		],
+		"binaryPatches": [
+			// Patch out the Launcher by bypassing the "-fromlauncher" execution argument check.
+			{
+				"patchOffset" : 0x0015b49a,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+		],
+	},
+]

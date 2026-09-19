@@ -1,0 +1,17 @@
+# Local build outputs and personal runtime data
+build/
+.vs/
+*.user
+*.pdb
+*.obj
+*.ilk
+*.log
+*.zip
+*.zip.sha256
+source/**/bin/*.dll
+source/**/bin/*.lib
+source/**/bin/*.exp
+source/**/bin/*.exe
+Fable3-Coop-Backups/
+friends.ini
+xlln-config-*.ini

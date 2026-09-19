@@ -1,0 +1,16 @@
+//# 007: Quantum of Solace
+//- Enables running Title from main executable (`JB_LiveEngine_s.exe`) rather than only via the launcher (`JB_Launcher_s.exe`).
+[
+	// `JB_LiveEngine_s.exe` version 10000082 Shipped.
+	{
+		"titleSha256": "2f24b05e559c1e1bc1b7f938707085e5b7e69f0d32313cc1b9a144fdf2fa313b",
+		"binaryPatches": [
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x00018e6c,
+				//JMP X
+				"patchData" : [0xeb],
+			},
+		],
+	},
+]

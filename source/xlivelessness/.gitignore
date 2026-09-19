@@ -1,0 +1,15 @@
+.cache/
+.vs/
+bin*
+build*
+CMakeCache.txt
+enc_temp_folder/
+lib/
+obj/
+xlivelessness/third-party/*/bin
+xlivelessness/xlive.aps
+
+# Preserve shipped build-property/source files when this snapshot is added to a new repository.
+!/bin/
+/bin/*
+!/bin/TitleBinary.props

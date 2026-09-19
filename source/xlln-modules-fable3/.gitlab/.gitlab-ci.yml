@@ -1,0 +1,26 @@
+build:
+  stage: build
+  tags:
+    - saas-windows-medium-amd64
+  script:
+    - curl.exe --location --create-dirs -o bin/debug/xlive.lib "$CI_SERVER_URL/$CI_PROJECT_NAMESPACE/xlivelessness/-/jobs/artifacts/master/raw/bin/debug/xlive.lib?job=build"
+    - curl.exe --location --create-dirs -o bin/release/xlive.lib "$CI_SERVER_URL/$CI_PROJECT_NAMESPACE/xlivelessness/-/jobs/artifacts/master/raw/bin/release/xlive.lib?job=build"
+    - curl.exe --location --create-dirs -o miniupnpc.tar.gz "https://github.com/miniupnp/miniupnp/releases/download/miniupnpc_2_2_8/miniupnpc-2.2.8.tar.gz"
+    - tar.exe -xzvf miniupnpc.tar.gz
+    - move "./miniupnpc-*" "miniupnpc"
+    - echo f | XCOPY ".\xlln-modules\third-party\miniupnpc\miniupnpc.vcxproj" ".\miniupnpc\msvc\miniupnpc.vcxproj" /F /Y
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - (docker pull $CI_REGISTRY_IMAGE`:latest) -or $true
+    - docker build --cache-from $CI_REGISTRY_IMAGE`:latest --tag $CI_REGISTRY_IMAGE`:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE`:latest .gitlab
+    - docker push $CI_REGISTRY_IMAGE`:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE`:latest
+    - docker run --rm -v "$pwd`:C:\xlln-modules" $CI_REGISTRY_IMAGE`:latest "msbuild /t:miniupnpc:rebuild /p:Configuration=Debug /p:Platform=Win32 C:\xlln-modules\miniupnpc\msvc\miniupnpc_vs2015.sln && msbuild /t:miniupnpc:rebuild /p:Configuration=Release /p:Platform=Win32 C:\xlln-modules\miniupnpc\msvc\miniupnpc_vs2015.sln"
+    - docker run --rm -v "$pwd`:C:\xlln-modules" $CI_REGISTRY_IMAGE`:latest "echo f | XCOPY /F /Y C:\xlln-modules\miniupnpc\msvc\Debug\miniupnpc.lib C:\xlln-modules\xlln-modules\third-party\miniupnpc\bin\Win32\Debug\miniupnpc.lib && echo f | XCOPY /F /Y C:\xlln-modules\miniupnpc\msvc\Debug\miniupnpc.pdb C:\xlln-modules\xlln-modules\third-party\miniupnpc\bin\Win32\Debug\miniupnpc.pdb && echo f | XCOPY /F /Y C:\xlln-modules\miniupnpc\msvc\Release\miniupnpc.lib C:\xlln-modules\xlln-modules\third-party\miniupnpc\bin\Win32\Release\miniupnpc.lib && echo f | XCOPY /F /Y C:\xlln-modules\miniupnpc\msvc\Release\miniupnpc.pdb C:\xlln-modules\xlln-modules\third-party\miniupnpc\bin\Win32\Release\miniupnpc.pdb"
+    - docker run --rm -v "$pwd`:C:\xlln-modules" $CI_REGISTRY_IMAGE`:latest "msbuild /t:rebuild /p:Configuration=Debug /p:Platform=x86 /p:TitleBinaryPath=debug\ C:\xlln-modules\xlln-modules.sln && msbuild /t:rebuild /p:Configuration=Release /p:Platform=x86 /p:TitleBinaryPath=release\ C:\xlln-modules\xlln-modules.sln"
+  artifacts:
+    name: xlln-modules-$CI_COMMIT_SHA
+    paths:
+      - bin/debug/XLiveLessNess/modules/*.dll
+      - bin/debug/XLiveLessNess/modules/*.pdb
+      - bin/release/XLiveLessNess/modules/*.dll
+      - bin/release/XLiveLessNess/modules/*.pdb

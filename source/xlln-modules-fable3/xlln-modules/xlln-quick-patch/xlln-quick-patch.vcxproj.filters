@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\xlln-module">
+      <UniqueIdentifier>{7c576107-60c1-4bf0-ab4f-1e0bd0659d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utils">
+      <UniqueIdentifier>{834f39c5-0055-42cf-b66e-f4d5673b77c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlive">
+      <UniqueIdentifier>{85a905c5-de97-4161-afbc-228ec766f292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\third-party">
+      <UniqueIdentifier>{1ad308e1-7160-4d9d-b572-0561d9e761fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\third-party\rapidjson">
+      <UniqueIdentifier>{6da03adf-41f4-45ab-a64f-2adfc0995e32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\third-party\rapidjson\error">
+      <UniqueIdentifier>{1f0912c9-abf5-451a-b970-82978f5968e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\third-party\rapidjson\internal">
+      <UniqueIdentifier>{74e1b083-d17d-4f7f-ad40-f6b1ff18b09e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\third-party\rapidjson\msinttypes">
+      <UniqueIdentifier>{86492c7a-048d-4ba6-bd99-064841f030be}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xlln-module.cpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\util-hook.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xlivelessness.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\sha256.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\utils.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\util-checksum.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\dllmain.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xlln-module.hpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClInclude>
+    <ClInclude Include="xlln-module-resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\util-hook.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xlivelessness.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\sha256.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\utils.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\util-checksum.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xlive\xdefs.hpp">
+      <Filter>Source Files\xlive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xlive\xfuncs.hpp">
+      <Filter>Source Files\xlive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\allocators.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\cursorstreamwrapper.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\document.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\encodedstream.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\encodings.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\filereadstream.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\filewritestream.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\fwd.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\istreamwrapper.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\memorybuffer.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\memorystream.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\ostreamwrapper.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\pointer.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\prettywriter.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\rapidjson.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\reader.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\schema.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\stream.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\stringbuffer.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\uri.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\writer.h">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\error\en.h">
+      <Filter>Source Files\third-party\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\error\error.h">
+      <Filter>Source Files\third-party\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\biginteger.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\clzll.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\diyfp.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\dtoa.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\ieee754.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\itoa.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\meta.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\pow10.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\regex.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\stack.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\strfunc.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\strtod.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\internal\swap.h">
+      <Filter>Source Files\third-party\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\msinttypes\inttypes.h">
+      <Filter>Source Files\third-party\rapidjson\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\third-party\rapidjson\msinttypes\stdint.h">
+      <Filter>Source Files\third-party\rapidjson\msinttypes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\xlln-module.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\third-party\rapidjson\license.txt">
+      <Filter>Source Files\third-party\rapidjson</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

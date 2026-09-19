@@ -1,0 +1,99 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Clean Project",
+			"type": "shell",
+			"presentation": {
+				"reveal": "always",
+				"revealProblems": "onProblem",
+			},
+			"problemMatcher": [],
+			"options": {
+				"cwd": "${workspaceRoot}",
+			},
+			"linux": {
+				"command": "${workspaceRoot}/.tools/clean-build.sh ${input:cleanCpm}",
+			},
+			"windows": {
+				"command": "${workspaceRoot}/.tools/clean-build.bat ${input:cleanCpm}"
+			},
+		},
+		{
+			"label": "Configure Project",
+			"type": "shell",
+			"presentation": {
+				"reveal": "always",
+				"revealProblems": "onProblem",
+			},
+			"problemMatcher": [],
+			"options": {
+				"cwd": "${workspaceRoot}",
+			},
+			"linux": {
+				"command": "wmake -B build -A ${input:buildPlatform} -DCMAKE_BUILD_TYPE=${input:buildConfig} -DWINE_PREFIX_DIR=${input:winePrefix} -DDXSDK_DIR=${input:dxsdkPath}",
+			},
+			"windows": {
+				"command": "cmake -B build -G 'Visual Studio 15 2017' -A ${input:buildPlatform} -DDXSDK_DIR=${input:dxsdkPath}",
+			},
+		},
+		{
+			"label": "Build Project",
+			"type": "shell",
+			"group": {
+				"kind": "build",
+				"isDefault": true,
+			},
+			"presentation": {
+				"reveal": "always",
+				"revealProblems": "onProblem",
+			},
+			"options": {
+				"cwd": "${workspaceRoot}",
+			},
+			"linux": {
+				"command": "cmake --build build --parallel",
+			},
+			"windows": {
+				"command": "cmake --build build --parallel --config=${input:buildConfig}",
+			},
+		},
+	],
+	"inputs": [
+		{
+			"type": "pickString",
+			"id": "cleanCpm",
+			"description": "Clean CPM modules:",
+			"default": "false",
+			"options": ["false", "true"],
+		},
+		{
+			"type": "pickString",
+			"id": "buildPlatform",
+			"description": "Select build platform:",
+			"default": "Win32",
+			"options": ["Win32", "x64"],
+		},
+		{
+			"type": "pickString",
+			"id": "buildConfig",
+			"description": "Select build configuration:",
+			"default": "Debug",
+			"options": ["Debug", "Release", "RelWithDebInfo", "MinSizeRel"],
+		},
+		{
+			"type": "promptString",
+			"id": "winePrefix",
+			"description": "Specify WINE prefix path (optional):",
+			"default": "",
+		},
+		{
+			"type": "promptString",
+			"id": "dxsdkPath",
+			"description": "Specify DirectX SDK path (optional):",
+			"default": "",
+		},
+	],
+}

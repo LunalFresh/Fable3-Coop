@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <TitleBinary>bsp.exe</TitleBinary>
+    <TitleBinaryPath></TitleBinaryPath>
+    <TitleBinaryArgs></TitleBinaryArgs>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="TitleBinary">
+      <Value>$(TitleBinary)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TitleBinaryPath">
+      <Value>$(TitleBinaryPath)</Value>
+    </BuildMacro>
+    <BuildMacro Include="TitleBinaryArgs">
+      <Value>$(TitleBinaryArgs)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\xlln-module">
+      <UniqueIdentifier>{7c576107-60c1-4bf0-ab4f-1e0bd0659d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utils">
+      <UniqueIdentifier>{834f39c5-0055-42cf-b66e-f4d5673b77c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlive">
+      <UniqueIdentifier>{85a905c5-de97-4161-afbc-228ec766f292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\config">
+      <UniqueIdentifier>{7635169f-9d53-4c6d-9825-b7703fb3883e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\language">
+      <UniqueIdentifier>{1113f80f-95eb-4598-982e-c114d1cf4078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus">
+      <UniqueIdentifier>{cc8abeac-aac7-4efb-9c96-c3fdfa446db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\run-loop">
+      <UniqueIdentifier>{de3e7456-dfe1-4369-a447-5ae5b4aba15c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\accounts">
+      <UniqueIdentifier>{df4bd332-c865-4c4b-9279-8a44b7904055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\advanced-settings">
+      <UniqueIdentifier>{5f6a8830-9701-419e-b74f-4b125286a641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\advanced-settings\language">
+      <UniqueIdentifier>{0a66d4a7-6f4a-4ed5-b041-ae433ac95327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\credits">
+      <UniqueIdentifier>{5eb6e64f-2009-41d5-9717-9356bb740730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\error">
+      <UniqueIdentifier>{bc31d3fe-8362-44c7-9819-4f88ae480217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\guide">
+      <UniqueIdentifier>{62f4938e-a8fe-4dc6-8466-38dbefbbf41a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\virtual-keyboard">
+      <UniqueIdentifier>{a5035372-f25e-479c-8321-587154e58863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\advanced-settings\hud-gui">
+      <UniqueIdentifier>{11fe2cf9-fe86-416f-a9a5-8a62b7f13431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\advanced-settings\adv-other">
+      <UniqueIdentifier>{6c74c124-7b3e-48b9-9d39-0b9036ac1c64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\advanced-settings\adv-controls">
+      <UniqueIdentifier>{1b2c385e-4584-4e4e-9577-08681ff5f04a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\coop">
+      <UniqueIdentifier>{0a77f375-5d6c-4b1e-9587-079cf0dd4e36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules">
+      <UniqueIdentifier>{64fea3d5-d98b-44cf-93f1-c54212c94b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Tags">
+      <UniqueIdentifier>{1c9684e9-ad81-4068-9dfc-334ede056fa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Networking">
+      <UniqueIdentifier>{f4ddfcf6-a274-491b-b0ff-ff6185a9a8e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Networking\Memory">
+      <UniqueIdentifier>{c1b570fa-9f43-44e3-90fd-3ecddba772de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam">
+      <UniqueIdentifier>{48383a59-7e7d-4619-b538-a134442df270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Cache">
+      <UniqueIdentifier>{760f202b-1809-476d-9c23-4eb17b8e2404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Common">
+      <UniqueIdentifier>{6c963a73-b6b4-408b-8d08-34522bb2fe5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Engine">
+      <UniqueIdentifier>{2d61f3b5-74ae-4d9c-98ec-60425b77f422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Maths">
+      <UniqueIdentifier>{9a7d56c4-90dc-479f-a7aa-65fe07481fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Cache\DataTypes">
+      <UniqueIdentifier>{ed119475-920b-48ea-b9ee-b0276715d283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Engine\Objects">
+      <UniqueIdentifier>{3384b1b8-1df3-4304-909a-078ecdd3caf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Engine\Players">
+      <UniqueIdentifier>{bdd97699-d9e8-4159-8bca-1b00ca4faaa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\title-modules\Blam\Engine\DataArray">
+      <UniqueIdentifier>{1de34685-6c73-4dbc-a9eb-0c440535c19f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xlln-module\menus\advanced-settings\adv-lobby">
+      <UniqueIdentifier>{d9591270-582a-4aa6-a336-4a7356287830}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xlln-module.cpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\util-hook.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\sha256.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\utils.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="title-patches.cpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClCompile>
+    <ClCompile Include="run-loop\run-loop.cpp">
+      <Filter>Source Files\xlln-module\run-loop</Filter>
+    </ClCompile>
+    <ClCompile Include="language\custom-labels.cpp">
+      <Filter>Source Files\xlln-module\language</Filter>
+    </ClCompile>
+    <ClCompile Include="language\custom-language.cpp">
+      <Filter>Source Files\xlln-module\language</Filter>
+    </ClCompile>
+    <ClCompile Include="config\accounts.cpp">
+      <Filter>Source Files\xlln-module\config</Filter>
+    </ClCompile>
+    <ClCompile Include="config\config.cpp">
+      <Filter>Source Files\xlln-module\config</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\custom-menu.cpp">
+      <Filter>Source Files\xlln-module\menus</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\custom-menu-functions.cpp">
+      <Filter>Source Files\xlln-module\menus</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\accounts\account-add.cpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\accounts\account-create.cpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\accounts\account-helper.cpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\accounts\account-list.cpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\accounts\account-management.cpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\advanced-settings.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\language\language-main.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\language</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\language\language-sub.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\language</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\credits\credits.cpp">
+      <Filter>Source Files\xlln-module\menus\credits</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\error\error.cpp">
+      <Filter>Source Files\xlln-module\menus\error</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\guide\guide.cpp">
+      <Filter>Source Files\xlln-module\menus\guide</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\virtual-keyboard\virtual-keyboard.cpp">
+      <Filter>Source Files\xlln-module\menus\virtual-keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="xlive.cpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xlivelessness.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\hud-gui\hud-gui.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\hud-gui\edit-fov.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\hud-gui\edit-fov-vehicle.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\hud-gui\edit-crosshair-offset.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\hud-gui\edit-crosshair-size.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\toggle-skulls.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\utils\util-checksum.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-other\adv-other.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-other</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\adv-controls.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\sensitivity-native-controller.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\sensitivity-native-mouse.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\sensitivity-raw-mouse.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\sensitivity-vehicle-ratio-controller.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\sensitivity-xy-axis-ratio-controller.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\sensitivity-xy-axis-ratio-mouse.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-controls\sensitivity-vehicle-ratio-mouse.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClCompile>
+    <ClCompile Include="coop\coop.cpp">
+      <Filter>Source Files\xlln-module\coop</Filter>
+    </ClCompile>
+    <ClCompile Include="title-modules\Networking\Memory\bitstream.cpp">
+      <Filter>Source Files\xlln-module\title-modules\Networking\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="title-modules\Tags\TagInterface.cpp">
+      <Filter>Source Files\xlln-module\title-modules\Tags</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\change-bsp.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\change-difficulty.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClCompile>
+    <ClCompile Include="title-modules\Blam\Engine\Players\Players.cpp">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Engine\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\coop-mode.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-other\fps-limit.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-other</Filter>
+    </ClCompile>
+    <ClCompile Include="menus\advanced-settings\adv-lobby\adv-lobby.cpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-lobby</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\dllmain.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xlln-module.hpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClInclude>
+    <ClInclude Include="xlln-module-resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\util-hook.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\sha256.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\utils.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="title-patches.hpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClInclude>
+    <ClInclude Include="run-loop\run-loop.hpp">
+      <Filter>Source Files\xlln-module\run-loop</Filter>
+    </ClInclude>
+    <ClInclude Include="language\custom-labels.hpp">
+      <Filter>Source Files\xlln-module\language</Filter>
+    </ClInclude>
+    <ClInclude Include="language\custom-language.hpp">
+      <Filter>Source Files\xlln-module\language</Filter>
+    </ClInclude>
+    <ClInclude Include="config\accounts.hpp">
+      <Filter>Source Files\xlln-module\config</Filter>
+    </ClInclude>
+    <ClInclude Include="config\config.hpp">
+      <Filter>Source Files\xlln-module\config</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\custom-menu.hpp">
+      <Filter>Source Files\xlln-module\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\custom-menu-functions.hpp">
+      <Filter>Source Files\xlln-module\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\accounts\account-add.hpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\accounts\account-create.hpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\accounts\account-helper.hpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\accounts\account-list.hpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\accounts\account-management.hpp">
+      <Filter>Source Files\xlln-module\menus\accounts</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\advanced-settings.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\language\language-main.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\language</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\language\language-sub.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\language</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\credits\credits.hpp">
+      <Filter>Source Files\xlln-module\menus\credits</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\error\error.hpp">
+      <Filter>Source Files\xlln-module\menus\error</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\guide\guide.hpp">
+      <Filter>Source Files\xlln-module\menus\guide</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\virtual-keyboard\virtual-keyboard.hpp">
+      <Filter>Source Files\xlln-module\menus\virtual-keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="xlive.hpp">
+      <Filter>Source Files\xlln-module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xlivelessness.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\hud-gui\hud-gui.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\hud-gui\edit-fov.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\hud-gui\edit-fov-vehicle.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\hud-gui\edit-crosshair-offset.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\hud-gui\edit-crosshair-size.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\hud-gui</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\toggle-skulls.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\utils\util-checksum.hpp">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xlive\xdefs.hpp">
+      <Filter>Source Files\xlive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xlive\xfuncs.hpp">
+      <Filter>Source Files\xlive</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-other\adv-other.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-other</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\adv-controls.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\sensitivity-native-controller.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\sensitivity-native-mouse.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\sensitivity-raw-mouse.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\sensitivity-vehicle-ratio-controller.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\sensitivity-xy-axis-ratio-controller.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\sensitivity-xy-axis-ratio-mouse.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-controls\sensitivity-vehicle-ratio-mouse.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-controls</Filter>
+    </ClInclude>
+    <ClInclude Include="coop\coop.hpp">
+      <Filter>Source Files\xlln-module\coop</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Networking\Memory\bitstream.hpp">
+      <Filter>Source Files\xlln-module\title-modules\Networking\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Tags\TagInterface.hpp">
+      <Filter>Source Files\xlln-module\title-modules\Tags</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Cache\DataTypes.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Cache\DataTypes\DatumIndex.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Cache\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Common\Common.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Engine\Objects\ObjectPlacementData.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Maths\integer_math.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Maths\Maths.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Maths\real_math.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\change-bsp.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\change-difficulty.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Engine\Players\Players.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Engine\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Engine\Objects\Objects.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="title-modules\Blam\Engine\DataArray\DataArray.h">
+      <Filter>Source Files\xlln-module\title-modules\Blam\Engine\DataArray</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\coop-mode.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-other\fps-limit.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-other</Filter>
+    </ClInclude>
+    <ClInclude Include="menus\advanced-settings\adv-lobby\adv-lobby.hpp">
+      <Filter>Source Files\xlln-module\menus\advanced-settings\adv-lobby</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\xlln-module.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xlln-module-exports.def">
+      <Filter>Source Files\xlln-module</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,59 @@
+//# Fable 3
+//- Enables running Title from main executable (`Fable3.exe`) rather than only via the launcher (`FableLauncher.exe`).
+//- Enables running multiple instances of the Title concurrently.
+[
+	// `Fable3.exe` version 10000083 Shipped.
+	{
+		"titleSha256": "5a6dc0f02aae4fb2fd7b67662f3c9a65a6f1c446efb13d661f01730e0e01c914",
+		"binaryPatches": [
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x001ce595,
+				//PUSH 0, NOP x3
+				"patchData" : [0x6a,0x00, 0x90,0x90,0x90],
+			},
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x00214a7c,
+				//NOP NOP
+				"patchData" : [0x90, 0x90],
+			},
+		],
+	},
+	// `Fable3.exe` version 10000183 Patch 1.
+	{
+		"titleSha256": "201d3f18ff4d77345c059edf9bb21ee2a9825ac0fefa0c8ea27d1c473c7ca350",
+		"binaryPatches": [
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x001ce595,
+				//PUSH 0, NOP x3
+				"patchData" : [0x6a,0x00, 0x90,0x90,0x90],
+			},
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x00214a7c,
+				//NOP NOP
+				"patchData" : [0x90, 0x90],
+			},
+		],
+	},
+	// `Fable3.exe` version 10000283 Patch 2.
+	{
+		"titleSha256": "aac98798e77ca32282d663af54fc185c3b5256b5317ed8568d7f12a0ef42da42",
+		"binaryPatches": [
+			// Allow multiple instances.
+			{
+				"patchOffset" : 0x001ce595,
+				//PUSH 0, NOP x3
+				"patchData" : [0x6a,0x00, 0x90,0x90,0x90],
+			},
+			// Patch out the Launcher.
+			{
+				"patchOffset" : 0x00214a7c,
+				//NOP NOP
+				"patchData" : [0x90, 0x90],
+			},
+		],
+	},
+]

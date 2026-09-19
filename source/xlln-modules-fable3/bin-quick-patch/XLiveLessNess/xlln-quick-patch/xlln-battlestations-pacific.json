@@ -1,0 +1,24 @@
+//# Battlestations: Pacific
+//- Enables running Title from main executable (`bsp.exe`) rather than only via the launcher (`battlestationspacific.exe`).
+//- Enables running multiple instances of the Title concurrently.
+[
+	// `bsp.exe` version 10000482.
+	{
+		"titleSha256": "a70205447009e100601348bf0962180b4de214e1192af9c918e7af5e5763f7fc",
+		"binaryPatches": [
+			// Change the function that checks if the launcher is running and has verified to instead return immediately without error.
+			{
+				"patchOffset" : 0x0064c250,
+				//xor eax, eax
+				//retn
+				"patchData" : [0x33,0xC0, 0xC3],
+			},
+			// Allow multiple instances of the game by removing the name from what would be a globally unique named mutex.
+			{
+				"patchOffset" : 0x004f82f8,
+				//PUSH 0, NOP x3
+				"patchData" : [0x6A,0x00, 0x90,0x90,0x90],
+			},
+		],
+	},
+]
