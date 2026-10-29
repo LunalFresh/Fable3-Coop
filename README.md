@@ -5,10 +5,10 @@
 <p align="center"><strong>Two players. Your saves. One Albion.</strong><br>
 Friends, invitations, and online co-op for the supported PC version of Fable III.</p>
 
-<p align="center"><strong>v2.5.0-beta.1</strong> · Windows · Two-player co-op · Powered by XLiveLessNess</p>
+<p align="center"><strong>v2.5.0</strong> · Windows · Two-player co-op · Powered by XLiveLessNess</p>
 
 <p align="center">
-  <a href="https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.0-beta.1"><strong>Download the beta</strong></a> ·
+  <a href="https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.0"><strong>Download v2.5.0</strong></a> ·
   <a href="#installation">Install</a> ·
   <a href="#play-together">Play together</a> ·
   <a href="docs/NETWORKING.md">Networking</a> ·
@@ -32,7 +32,7 @@ This community mod connects Fable III's co-op controls to an XLLN peer backend. 
 
 ## Before you install
 
-- Both players need their own working Fable III installation, matching game content/DLC, and this beta on both PCs.
+- Both players need their own working Fable III installation, matching game content/DLC, and this release on both PCs.
 - Supported executable: **Fable3.exe 1.1.1.3 / Patch 2**, with the exact checksum below. Other builds are rejected by setup.
 - Tested on Windows 11. Other Windows versions are not verified. Setup uses Windows PowerShell 5.1; the packaged runtime's Opus build enables AVX2.
 - Each PC must be reachable by the other over **IPv4, UDP 39000–39001**. An address alone does not establish a network route or open a firewall.
@@ -50,7 +50,7 @@ Use `Get-FileHash .\Fable3.exe -Algorithm SHA256` in PowerShell to compare your 
 
 ## Installation
 
-1. Download **[Fable3-Coop-v2.5.0-beta.1.zip](https://github.com/LunalFresh/Fable3-Coop/releases/download/v2.5.0-beta.1/Fable3-Coop-v2.5.0-beta.1.zip)** from the beta release. Use this prepared package; GitHub's automatically generated source archives are intended for development. Extract the **entire ZIP** into a separate folder, such as Downloads.
+1. Download **[Fable3-Coop-v2.5.0.zip](https://github.com/LunalFresh/Fable3-Coop/releases/download/v2.5.0/Fable3-Coop-v2.5.0.zip)** from the release release. Use this prepared package; GitHub's automatically generated source archives are intended for development. Extract the **entire ZIP** into a separate folder, such as Downloads.
 2. Close Fable III and its launcher. Run **Setup.cmd** from the extracted folder.
 3. Enter the folder containing **Fable3.exe**. On a fresh installation, choose a player name different from your friend's. Existing XLLN profiles and settings are preserved.
 4. If peer access is not already configured, follow the [network setup](docs/NETWORKING.md).
@@ -71,15 +71,15 @@ Returning to the main menu briefly is part of joining; a successful join continu
 
 Declined requests remain labeled **Request declined** on the sender's side until removed or replaced with a new request. They are not accepted friends or pending requests. See [request states and connection help](docs/TROUBLESHOOTING.md).
 
-## Beta status
+## Supported play
 
 The distributed DLLs have been tested on two PCs: joining and invitations with either player hosting; leave/kick; friend request acceptance, cancellation, decline and retry; friendship persistence after restarting; and remote play across separate networks, including a Brightwall-to-Mistpeak transition and leaving/rejoining. Six automated runtime checks passed. See [validation scope](VALIDATION.md).
 
-This beta supports **two-player, peer-hosted co-op**. It does not provide a public username directory, central matchmaking service, dedicated server, or hosted offline request inbox. Both games must eventually be running and reachable to exchange requests. Internet routing and firewall setup remain the players' responsibility.
+This release supports **two-player, peer-hosted co-op**. It does not provide a public username directory, central matchmaking service, dedicated server, or hosted offline request inbox. Both games must eventually be running and reachable to exchange requests. Internet routing and firewall setup remain the players' responsibility.
 
-## Help improve the beta
+## Support
 
-When reporting an issue, include the beta version, executable checksum, Windows version, which player was hosting, and the exact action/result. Say whether the peers were on the same or separate networks. Include only the relevant log excerpt, with personal names and addresses removed. Please do not upload saves, game files, or your entire game folder.
+When reporting an issue, include the mod version, executable checksum, Windows version, which player was hosting, and the exact action/result. Say whether the peers were on the same or separate networks. Include only the relevant log excerpt, with personal names and addresses removed. Please do not upload saves, game files, or your entire game folder.
 
 ## Credits & source
 

@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.5.0-beta.1
+## 2.5.0
 
 - Add a complete peer friend-request workflow: one-sided send, explicit acceptance, cancellation, decline, and persisted state across restarts.
 - Show pending, delivered, declined, and confirmation states in the Sanctuary-style menu, with request notifications and block/unblock controls.

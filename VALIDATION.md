@@ -1,6 +1,6 @@
-# Beta validation
+# release validation
 
-Version: **2.5.0-beta.1**. Validation date: **2026-09-19**.
+Version: **2.5.0**. Validation date: **2026-09-19**.
 
 ## Gameplay on the distributed binaries
 
@@ -23,12 +23,12 @@ Tests cover packet/state handling and rendering fixtures, not every possible gam
 
 ## Installer checks
 
-The beta installer passed under Windows PowerShell 5.1 in isolated game-folder fixtures using the supported executable and original launcher. Checks covered fresh installation, repeat installation, actual v2.4 DLL upgrade and byte-exact rollback, matching payload/receipt version, existing profile and friend-file preservation, modified-configuration preservation, invalid name/build rejection, corrupted-payload rejection, launcher --check, exact-peer firewall planning, fresh uninstall, and isolated save import with unchanged originals and no-overwrite rejection.
+The release installer passed under Windows PowerShell 5.1 in isolated game-folder fixtures using the supported executable and original launcher. Checks covered fresh installation, repeat installation, actual v2.4 DLL upgrade and byte-exact rollback, matching payload/receipt version, existing profile and friend-file preservation, modified-configuration preservation, invalid name/build rejection, corrupted-payload rejection, launcher --check, exact-peer firewall planning, fresh uninstall, and isolated save import with unchanged originals and no-overwrite rejection.
 
 The game executable and launcher were used only in local validation fixtures and are not included in this release. Firewall checks used CheckOnly; no live firewall rules were changed. Save-import checks used fake data in an isolated profile directory.
 
 ## Scope and limits
 
-The distributed runtime binaries are unchanged from the gameplay-tested pair. A fresh physical-PC installation of this exact beta package has not been launched into gameplay; installation is verified in fixtures, and the previous installer generation also passed a physical second-PC clean-install/rollback check. Other game builds, arbitrary older save formats, non-AVX2 CPUs, and all possible network/firewall policies remain unverified.
+The distributed runtime binaries are unchanged from the gameplay-tested pair. A fresh physical-PC installation of this exact release package has not been launched into gameplay; installation is verified in fixtures, and the previous installer generation also passed a physical second-PC clean-install/rollback check. Other game builds, arbitrary older save formats, non-AVX2 CPUs, and all possible network/firewall policies remain unverified.
 
 The packaging pass does not change the live game installations. Source, manifests, documentation, and release checksums accompany the runtime.

@@ -18,7 +18,7 @@ If needed, close the game and run **Import-Save.cmd**. Provide the game folder a
 
 ## Upgrade
 
-Close the game and launcher, extract the new package separately, and run its Setup.cmd against the same game folder. Existing friends and configuration remain intact. Keep the printed backup path and this extracted package. Both players should use the same beta.
+Close the game and launcher, extract the new package separately, and run its Setup.cmd against the same game folder. Existing friends and configuration remain intact. Keep the printed backup path and this extracted package. Both players should use the same mod version.
 
 ## Uninstall / restore
 

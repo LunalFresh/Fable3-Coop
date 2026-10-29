@@ -1,6 +1,6 @@
 # Third-party notices & credits
 
-The mod builds on GlitchyScripts' **XLiveLessNess** and **XLLN Modules**. Their original notices and LGPL 2.1 license texts are retained. Modified source and build files are included in `source/xlivelessness` and `source/xlln-modules-fable3`; `source/PROVENANCE.json` records the upstream base commits. These snapshots include local modifications, so the base commits alone do not reproduce this beta.
+The mod builds on GlitchyScripts' **XLiveLessNess** and **XLLN Modules**. Their original notices and LGPL 2.1 license texts are retained. Modified source and build files are included in `source/xlivelessness` and `source/xlln-modules-fable3`; `source/PROVENANCE.json` records the upstream base commits. These snapshots include local modifications, so the base commits alone do not reproduce this release.
 
 Upstream project addresses:
 

@@ -1,6 +1,6 @@
 # Source/build provenance
 
-This beta includes the matching modified runtime source in `source/xlivelessness` and module source in `source/xlln-modules-fable3`. The distributed DLLs are the gameplay-tested build; packaging does not rebuild them. Original source READMEs describe upstream features and are not the compatibility guide for this beta. Use the root README and manifest for supported game details.
+This release includes the matching modified runtime source in `source/xlivelessness` and module source in `source/xlln-modules-fable3`. The distributed DLLs are the gameplay-tested build; packaging does not rebuild them. Original source READMEs describe upstream features and are not the compatibility guide for this release. Use the root README and manifest for supported game details.
 
 The validated runtime build used Visual Studio 2022 Build Tools, v143, Win32 Debug, Windows SDK 10.0.26100.0, CMake, and the June 2010 DirectX SDK. xlive's supplied CMake files manage Opus 1.5.2 and RapidXML dependencies and use the static debug CRT. Its resulting DLL does not require the separately installed Visual Studio debug runtime.
 
