@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 ---
 
-**Beta version:**
+**Mod version:**
 **Fable3.exe SHA-256:**
 **Windows version:**
 **Same network or separate networks:**

@@ -22,4 +22,4 @@ Canceling a pending friend request removes it from the recipient. Declining remo
 
 ## Diagnostic information
 
-The controller update's seven automated checks and gameplay coverage are documented in [VALIDATION.md](../VALIDATION.md). For a new failure, report the beta version, game checksum, host/guest direction, last working action, and exact visible result. When logging is enabled, XLLN logs are under the game's `XLiveLessNess/logs` directory. Share only a relevant excerpt and remove names, addresses, and other personal information.
+The mod's seven automated checks and gameplay coverage are documented in [VALIDATION.md](../VALIDATION.md). For a new failure, report the mod version, game checksum, host/guest direction, last working action, and exact visible result. When logging is enabled, XLLN logs are under the game's `XLiveLessNess/logs` directory. Share only a relevant excerpt and remove names, addresses, and other personal information.
