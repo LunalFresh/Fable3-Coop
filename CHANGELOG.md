@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.5.1-controller.1
+
+- Add XInput controller navigation to Friends and Invitations: D-pad/left stick, A/B actions, visible focus, and controller prompts.
+- Isolate controller input while the panel is open and require neutral input after opening, closing, focus changes, or reconnection.
+- Preserve keyboard/mouse input and use the existing menu action handlers, network protocol, and join/invite/kick backend.
+- Include the exact runtime accepted after in-game controller testing, matching source, seven passing automated checks, and checksum-verified installation/rollback.
+- Keep keyboard text entry for new names/addresses; multiple addresses per friend remain outside this update.
+
 ## 2.5.0-beta.1
 
 - Add a complete peer friend-request workflow: one-sided send, explicit acceptance, cancellation, decline, and persisted state across restarts.

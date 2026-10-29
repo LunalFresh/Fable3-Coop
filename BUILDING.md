@@ -20,7 +20,7 @@ If MSBuild reports duplicate environment dictionary keys, normalize inherited en
 
 The package manifest describes the distributed binaries. Rebuilt binaries can have different hashes due to build metadata; update your own package manifest after verifying the rebuilt pair. Keep all original exports and the versioned bridge compatible. Rebuilding/repackaging is separate from installing this already-built ZIP.
 
-The network-ID fix links bcrypt from the Windows SDK. Run the six runtime checks with the game closed so the isolated D3D9 test can create its device. The Opus build enables AVX2; support for CPUs without AVX2 has not been verified.
+The network-ID fix links bcrypt from the Windows SDK. Run the seven runtime checks with the game closed so the isolated D3D9 test can create its device. The Opus build enables AVX2; support for CPUs without AVX2 has not been verified.
 
 ## Installer validation
 

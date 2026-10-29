@@ -5,10 +5,10 @@
 <p align="center"><strong>Two players. Your saves. One Albion.</strong><br>
 Friends, invitations, and online co-op for the supported PC version of Fable III.</p>
 
-<p align="center"><strong>v2.5.0-beta.1</strong> · Windows · Two-player co-op · Powered by XLiveLessNess</p>
+<p align="center"><strong>v2.5.1-controller.1</strong> · Windows · Two-player co-op · Powered by XLiveLessNess</p>
 
 <p align="center">
-  <a href="https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.0-beta.1"><strong>Download the beta</strong></a> ·
+  <a href="https://github.com/LunalFresh/Fable3-Coop/archive/refs/heads/main.zip"><strong>Download the controller update</strong></a> ·
   <a href="#installation">Install</a> ·
   <a href="#play-together">Play together</a> ·
   <a href="docs/NETWORKING.md">Networking</a> ·
@@ -26,6 +26,7 @@ This community mod connects Fable III's co-op controls to an XLLN peer backend. 
 | :--- | :--- |
 | **Friends** | Send, accept, decline, or cancel requests. Accepted friends stay saved between launches. |
 | **Join & invite** | See when a friend is online and joinable, join their world, or send a game invitation. |
+| **Controller support** | Navigate Friends and Invitations with D-pad/left stick and A/B, with visible focus and input isolation. |
 | **Session controls** | Leave a session, remove a guest as host, and reconnect. |
 | **Across networks** | Connect using reachable IPv4 addresses over UDP. No particular networking service is required. |
 | **Reversible setup** | Install with checksum checks and backups while retaining existing profiles and settings. |
@@ -50,7 +51,7 @@ Use `Get-FileHash .\Fable3.exe -Algorithm SHA256` in PowerShell to compare your 
 
 ## Installation
 
-1. Download **[Fable3-Coop-v2.5.0-beta.1.zip](https://github.com/LunalFresh/Fable3-Coop/releases/download/v2.5.0-beta.1/Fable3-Coop-v2.5.0-beta.1.zip)** from the beta release. Use this prepared package; GitHub's automatically generated source archives are intended for development. Extract the **entire ZIP** into a separate folder, such as Downloads.
+1. Download the **[current repository ZIP](https://github.com/LunalFresh/Fable3-Coop/archive/refs/heads/main.zip)** for **v2.5.1-controller.1**. It includes the tested DLL, installer, and matching source; building is not required. Extract the **entire ZIP** into a separate folder, such as Downloads. The [previous v2.5.0-beta.1 release](https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.0-beta.1) remains available.
 2. Close Fable III and its launcher. Run **Setup.cmd** from the extracted folder.
 3. Enter the folder containing **Fable3.exe**. On a fresh installation, choose a player name different from your friend's. Existing XLLN profiles and settings are preserved.
 4. If peer access is not already configured, follow the [network setup](docs/NETWORKING.md).
@@ -67,13 +68,15 @@ Keep your player name's spelling and capitalization: it determines your local sa
 3. The other player accepts the request. They do **not** need to add the sender's address manually.
 4. Select a joinable friend and choose **Join**, or send a game **Invite** and accept it on the other PC.
 
+With a controller, use **D-pad/left stick** to move, **A** to select a friend or highlighted action, and **B** to go back or close the panel. Release the opening/closing button before continuing. New names and addresses still use keyboard typing. See [controller controls and validation](docs/CONTROLLER-CANDIDATE.md).
+
 Returning to the main menu briefly is part of joining; a successful join continues into the host's world. The host can use **Kick player** for the connected guest. **F6** opens an incoming request/invitation, **Esc** closes the panel, and **Home** opens the XLLN guide.
 
 Declined requests remain labeled **Request declined** on the sender's side until removed or replaced with a new request. They are not accepted friends or pending requests. See [request states and connection help](docs/TROUBLESHOOTING.md).
 
 ## Beta status
 
-The distributed DLLs have been tested on two PCs: joining and invitations with either player hosting; leave/kick; friend request acceptance, cancellation, decline and retry; friendship persistence after restarting; and remote play across separate networks, including a Brightwall-to-Mistpeak transition and leaving/rejoining. Six automated runtime checks passed. See [validation scope](VALIDATION.md).
+The controller update passed in-game user testing for menu navigation, input isolation, held-button handling, and focus/reconnect recovery. All seven automated runtime checks and the installer/rollback fixtures passed. The earlier beta established the two-PC co-op baseline; this update retains its network protocol and join/invite/kick backend. See [validation scope](VALIDATION.md) and the [previous beta results](docs/VALIDATION-BETA.md).
 
 This beta supports **two-player, peer-hosted co-op**. It does not provide a public username directory, central matchmaking service, dedicated server, or hosted offline request inbox. Both games must eventually be running and reachable to exchange requests. Internet routing and firewall setup remain the players' responsibility.
 

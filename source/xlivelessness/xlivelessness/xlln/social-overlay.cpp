@@ -2,6 +2,7 @@
 #include "social-overlay.hpp"
 #include "social.hpp"
 #include "social-kick.hpp"
+#include "social-controller.hpp"
 #include "debug-log.hpp"
 #include "../xlive/xrender.hpp"
 #include "../xlive/xlive.hpp"
@@ -47,6 +48,10 @@ std::string pendingAddress;
 XUID confirmGuest=0;
 uint64_t confirmToken=0;
 std::string confirmName;
+enum class PadTarget { Friends, Invite, Join, Accept, Decline, Remove, Kick, Block,
+    PreviousPage, NextPage, Address, Name, SendRequest, Back };
+PadTarget padTarget=PadTarget::Friends;
+bool padMode=false, padConfirmYes=false, controllerPresent=false;
 
 void ConfirmKick(bool yes) {
     if(yes) {
@@ -170,10 +175,108 @@ void Act(int action,const std::vector<SocialPeerView>& peers) {
     if(action==5) {
         auto token=SocialKickToken(p.xuid);
         if(!token) {status=L"Only the host can kick the current co-op guest.";dirty=true;return;}
-        confirmGuest=p.xuid;confirmToken=token;confirmName=p.name;dirty=true;
+        confirmGuest=p.xuid;confirmToken=token;confirmName=p.name;padConfirmYes=false;dirty=true;
     }
 }
+struct PadControl {PadTarget target;int x,y,w,h;};
+std::vector<PadControl> PadControls(const std::vector<SocialPeerView>& peers) {
+    std::vector<PadControl> controls={{PadTarget::Friends,24,102,752,252}};
+    const auto p=selected>=0 && selected<(int)peers.size()?&peers[selected]:nullptr;
+    const bool accepted=p && p->relationship==SocialRelationship::Friend;
+    const bool incoming=p && (p->relationship==SocialRelationship::Incoming || (accepted && p->incoming));
+    auto add=[&](PadTarget target,int x,int y,int w,bool enabled=true) {
+        if(enabled)controls.push_back({target,x,y,w,36});
+    };
+    add(PadTarget::Kick,24,360,160,p && SocialKickToken(p->xuid)!=0);
+    add(PadTarget::Block,196,360,116,p!=nullptr);
+    add(PadTarget::PreviousPage,628,360,68,page>0);
+    add(PadTarget::NextPage,706,360,70,(page+1)*Rows<(int)peers.size());
+    add(PadTarget::Invite,24,400,140,accepted && p->online);
+    add(PadTarget::Join,176,400,140,accepted && p->joinable);
+    add(PadTarget::Accept,328,400,140,incoming);
+    add(PadTarget::Decline,480,400,140,incoming);
+    add(PadTarget::Remove,632,400,140,p && p->relationship!=SocialRelationship::Blocked);
+    add(PadTarget::Address,24,484,280);add(PadTarget::Name,320,484,240);
+    add(PadTarget::SendRequest,588,484,188);add(PadTarget::Back,630,555,146);
+    return controls;
+}
+void PadFocus(PadTarget target) {
+    padTarget=target;focus=target==PadTarget::Address?1:target==PadTarget::Name?2:0;dirty=true;
+}
+void PadPrimary(const std::vector<SocialPeerView>& peers) {
+    if(selected<0 || selected>=(int)peers.size()) {PadFocus(PadTarget::Address);return;}
+    const auto& p=peers[selected];
+    PadFocus(p.relationship==SocialRelationship::Incoming || p.incoming?PadTarget::Accept:
+        p.joinable?PadTarget::Join:p.online?PadTarget::Invite:
+        p.relationship==SocialRelationship::Blocked?PadTarget::Block:PadTarget::Remove);
+}
+void ConsumeController(WORD buttons,const std::vector<SocialPeerView>& peers) {
+    if(!opened || !buttons)return;
+    padMode=true;dirty=true;
+    if(selected<0 && !peers.empty())selected=0;
+    if(confirmGuest) {
+        if(buttons & SocialPadB) {ConfirmKick(false);return;}
+        if(buttons & SocialPadLeft)padConfirmYes=false;
+        else if(buttons & SocialPadRight)padConfirmYes=true;
+        if(buttons & SocialPadA)ConfirmKick(padConfirmYes);
+        return;
+    }
+    if(buttons & SocialPadB) {
+        if(padTarget==PadTarget::Friends)opened=false;
+        else PadFocus(PadTarget::Friends);
+        return;
+    }
+    auto controls=PadControls(peers);
+    auto current=std::find_if(controls.begin(),controls.end(),[](const PadControl& c){return c.target==padTarget;});
+    // Presence/requests may change while the menu is open; never activate a
+    // newly disabled action or silently substitute a destructive action.
+    if(current==controls.end()) {PadFocus(PadTarget::Friends);return;}
+    if(buttons & SocialPadA) {
+        switch(padTarget) {
+        case PadTarget::Friends:PadPrimary(peers);break;
+        case PadTarget::Invite:Act(0,peers);break;
+        case PadTarget::Join:Act(1,peers);break;
+        case PadTarget::Accept:Act(2,peers);break;
+        case PadTarget::Decline:Act(3,peers);break;
+        case PadTarget::Remove:Act(4,peers);PadFocus(PadTarget::Friends);break;
+        case PadTarget::Kick:Act(5,peers);break;
+        case PadTarget::Block:Act(6,peers);PadFocus(PadTarget::Friends);break;
+        case PadTarget::PreviousPage:--page;selected=page*Rows;PadFocus(PadTarget::Friends);break;
+        case PadTarget::NextPage:++page;selected=page*Rows;PadFocus(PadTarget::Friends);break;
+        case PadTarget::SendRequest:Add();break;
+        case PadTarget::Address:case PadTarget::Name:status=L"Use the keyboard to enter text. Your controller can select Send request.";break;
+        case PadTarget::Back:opened=false;break;
+        }
+        return;
+    }
+    int dx=0,dy=0;
+    if(buttons & SocialPadUp)dy=-1;
+    else if(buttons & SocialPadDown)dy=1;
+    else if(buttons & SocialPadLeft)dx=-1;
+    else if(buttons & SocialPadRight)dx=1;
+    if(!dx && !dy)return;
+    if(padTarget==PadTarget::Friends) {
+        if(dy<0) {selected=(std::max)(0,selected-1);page=selected/Rows;return;}
+        if(dy>0 && selected+1<(int)peers.size()) {++selected;page=selected/Rows;return;}
+        if(dx>0) {PadPrimary(peers);return;}
+    }
+    const int cx=current->x+current->w/2,cy=current->y+current->h/2;
+    int best=INT_MAX;PadTarget next=padTarget;
+    for(const auto& c:controls) {
+        int x=c.x+c.w/2-cx,y=c.y+c.h/2-cy;
+        if((dx && x*dx<=0) || (dy && y*dy<=0))continue;
+        if((dx && abs(y)>abs(x)) || (dy && abs(x)>abs(y)))continue;
+        int score=dx?abs(x)+2*abs(y):abs(y)+2*abs(x);
+        if(score<best) {best=score;next=c.target;}
+    }
+    PadFocus(next);
+}
+void PadOutline(int x,int y,int w,int h) {
+    Fill(x,y,w,2,Gold);Fill(x,y+h-2,w,2,Gold);
+    Fill(x,y,2,h,Gold);Fill(x+w-2,y,2,h,Gold);
+}
 LRESULT CALLBACK WindowProc(HWND window,UINT message,WPARAM w,LPARAM l) {
+    if(message==WM_KILLFOCUS || (message==WM_ACTIVATEAPP && !w))SocialControllerSuspend();
     if(message==WM_KEYDOWN && w==VK_F6 && available && GetTickCount64()<inviteUntil.load()) {
         if(!(l & (1L<<30))) {SocialKickCancel();opened=true;}
         return 0;
@@ -199,6 +302,7 @@ void Consume(const std::vector<SocialPeerView>& peers) {
     for(const auto& event:pending) {
         if(!opened) break;
         dirty=true;
+        padMode=false;
         if(event.message==WM_KEYDOWN) {
             if(confirmGuest) {if(event.key==VK_ESCAPE)ConfirmKick(false);continue;}
             if(event.key==VK_ESCAPE) {opened=false;continue;}
@@ -320,10 +424,12 @@ bool Paint(bool full,const std::vector<SocialPeerView>& peers) {
         Button(L"Send request",588,484,188);
         Text(status.empty()?L"Enter their address once. They only need to accept your request.":status,24,523,752,28,status.empty()?Muted:Gold,false,true,true);
         Band(24,555,752,34,RGB(156,104,26),170);Rule(24,553,752);
-        Text(L"Up / Down  Select     Tab  Edit",40,555,530,34,White,false,false,true);
+        Text(padMode?L"D-pad / L stick  Move     A  Select":L"Up / Down  Select     Tab  Edit",40,555,530,34,White,false,false,true);
         Text(L"Back",633,555,82,34,White,false,true);
         // An outlined key prompt uses the same Esc action as the Sanctuary menus.
-        Frame(715,555,61,35);Text(L"Esc",718,554,55,36,White,false,true,true);
+        Frame(715,555,61,35);Text(padMode?L"B":L"Esc",718,554,55,36,padMode?RGB(245,152,126):White,false,true,true);
+        if(padMode && !confirmGuest)for(const auto& c:PadControls(peers))
+            if(c.target==padTarget)PadOutline(c.x,c.y,c.w,c.h);
         if(confirmGuest) {
             Fill(18,18,764,565,RGB(8,7,6),135);
             Frame(96,196,608,218,255);
@@ -331,6 +437,10 @@ bool Paint(bool full,const std::vector<SocialPeerView>& peers) {
             Rule(120,270,560);
             Text(L"They will leave this session and remain in your friends list.",120,278,560,36,White,false,true,true);
             Button(L"Cancel",230,330,160);Button(L"Kick player",410,330,160);
+            if(padMode) {
+                PadOutline(padConfirmYes?410:230,330,160,36);
+                Text(L"Left / Right  Choose     A  Select     B  Cancel",120,370,560,28,White,false,true,true);
+            }
         }
     }
     // Premultiplied RGBA: transparent corners and glass, opaque text and trim.
@@ -389,10 +499,12 @@ void SyncOpen() {
     const bool full=opened.load();
     if(full!=notified) {
         notified=full;
+        SocialControllerCapture(full);
         XllnUpdateXliveSystemUIOpenState();
         if(full) {
             cursorAdjustments=0;do{++cursorAdjustments;}while(ShowCursor(TRUE)<0);cursorShown=true;
             activeUser=requestedUser;status.clear();dirty=true;
+            PadFocus(PadTarget::Friends);padConfirmYes=false;
         } else if(cursorShown) {
             confirmGuest=0;confirmToken=0;confirmName.clear();
             while(cursorAdjustments-->0)ShowCursor(FALSE);cursorAdjustments=0;cursorShown=false;
@@ -417,9 +529,9 @@ bool SocialOverlayIsOpen() {return opened.load();}
 bool SocialOverlayShow(uint32_t user) {
     if(!available || user>=XLIVE_LOCAL_USER_COUNT)return false;
     SocialKickCancel();
-    requestedUser=user;opened=true;return true;
+    requestedUser=user;opened=true;SocialControllerCapture(true);return true;
 }
-bool SocialOverlayClose() {return opened.exchange(false);}
+bool SocialOverlayClose() {bool wasOpen=opened.exchange(false);SocialControllerCapture(false);return wasOpen;}
 bool SocialOverlayNotifyInvite(uint32_t user) {
     if(!available)return false;
     requestedUser=user;inviteUntil=GetTickCount64()+60000;return true;
@@ -436,11 +548,13 @@ void SocialOverlayAttach(IDirect3DDevice9* titleDevice,HWND window) {
     auto prior=SetWindowLongPtrW(window,GWLP_WNDPROC,(LONG_PTR)WindowProc);
     if(!prior && GetLastError()) {device=nullptr;titleWindow=nullptr;previousProc=nullptr;return;}
     previousProc=(WNDPROC)prior;available=true;
+    SocialControllerAttach();
     XLLN_DEBUG_LOG(XLLN_LOG_CONTEXT_XLIVELESSNESS|XLLN_LOG_LEVEL_INFO,"SocialOverlay: attached to D3D9 title window; Sanctuary friends UI will render in game.");
 }
 void SocialOverlayDetach() {
     SocialKickCancel();confirmGuest=0;confirmToken=0;confirmName.clear();
     available=false;opened=false;inviteUntil=0;joinPending=false;pendingAddress.clear();SyncOpen();
+    SocialControllerDetach();padMode=false;controllerPresent=false;PadFocus(PadTarget::Friends);
     if(titleWindow && previousProc && (WNDPROC)GetWindowLongPtrW(titleWindow,GWLP_WNDPROC)==WindowProc)
         SetWindowLongPtrW(titleWindow,GWLP_WNDPROC,(LONG_PTR)previousProc);
     titleWindow=nullptr;previousProc=nullptr;device=nullptr;
@@ -470,7 +584,7 @@ void SocialOverlayRender() {
     }
     bool full=opened.load();const auto now=GetTickCount64();
     if(!full && now>=inviteUntil.load())return;
-    if(FAILED(device->TestCooperativeLevel()))return;
+    if(FAILED(device->TestCooperativeLevel())) {SocialControllerSuspend();return;}
     D3DVIEWPORT9 viewport={};if(FAILED(device->GetViewport(&viewport)) || !viewport.Width || !viewport.Height)return;
     scale=(std::min)(1.5f,(std::min)(viewport.Width/850.0f,viewport.Height/650.0f));
     left=viewport.X+(viewport.Width-Width*scale)/2;top=full?viewport.Y+(viewport.Height-Height*scale)/2:viewport.Y+20;
@@ -478,7 +592,15 @@ void SocialOverlayRender() {
     if(!full && std::none_of(peers.begin(),peers.end(),[](const SocialPeerView& p){return p.incoming || p.relationship==SocialRelationship::Incoming;})) {inviteUntil=0;return;}
     if(selected>=(int)peers.size())selected=-1;
     page=(std::min)(page,peers.empty()?0:((int)peers.size()-1)/Rows);
-    if(full && GetForegroundWindow()==titleWindow)Consume(peers);
+    if(full) {
+        const bool foreground=GetForegroundWindow()==titleWindow;
+        auto controller=SocialControllerPoll(foreground,now);
+        if(controller.connected && !controllerPresent) {padMode=true;dirty=true;}
+        controllerPresent=controller.connected;
+        if(controller.connected && selected<0 && !peers.empty()) {selected=0;page=0;dirty=true;}
+        if(foreground) {Consume(peers);ConsumeController(controller.pressed,peers);}
+        if(!controller.connected && padMode) {padMode=false;dirty=true;}
+    }
     SyncOpen();if(full && !opened)return;
     if(dirty || full!=paintedOpen || now-lastPaint>=250) {
         if(!Paint(full,peers))return;

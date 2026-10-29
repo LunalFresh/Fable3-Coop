@@ -8,6 +8,14 @@ std::vector<SocialPeerView> testPeers;
 std::vector<bool> uiNotices;
 int forwardedKeys=0, inviteCalls=0, joinCalls=0, acceptCalls=0, declineCalls=0;
 int friendAcceptCalls=0, friendDeclineCalls=0, blockCalls=0;
+bool controllerCaptured=false;
+bool testControllerConnected=false;
+int controllerSuspends=0;
+bool SocialControllerAttach(){return false;}
+void SocialControllerDetach(){controllerCaptured=false;}
+void SocialControllerCapture(bool value){controllerCaptured=value;}
+void SocialControllerSuspend(){++controllerSuspends;}
+SocialControllerFrame SocialControllerPoll(bool,ULONGLONG){SocialControllerFrame frame;frame.connected=testControllerConnected;return frame;}
 uint32_t SocialRespondFriend(const std::string&,bool accept) {accept?++friendAcceptCalls:++friendDeclineCalls;return 0;}
 uint32_t SocialBlockPeer(const std::string&,bool) {++blockCalls;return 0;}
 bool titleConsumedClose=false;
@@ -162,6 +170,66 @@ int main() {
     SocialOverlayDetach();assert(!opened && !available && !texture && !uiNotices.back());
     titleConsumedClose=true;DispatchPendingJoin();assert(!joinPending && joinCalls==2);
     assert((WNDPROC)GetWindowLongPtrW(testWindow,GWLP_WNDPROC)==TestProc);
+    // Controller actions must use the same backend and deferred-close path.
+    testControllerConnected=true;
+    SocialOverlayAttach(testDevice,testWindow);SocialOverlayShow(0);render();
+    auto pad=[&](WORD button){ConsumeController(button,testPeers);};
+    selected=0;PadFocus(PadTarget::Friends);pad(SocialPadA);
+    assert(padTarget==PadTarget::Join && opened && controllerCaptured);
+    WindowProc(testWindow,WM_KILLFOCUS,0,0);assert(controllerSuspends==1 && controllerCaptured);
+    pad(SocialPadLeft);assert(padTarget==PadTarget::Invite);
+    auto invitations=inviteCalls;pad(SocialPadA);assert(inviteCalls==invitations+1 && opened);
+    // Render production controller focus and prompts through the D3D9 fixture.
+    dirty=true;render();
+    SaveBitmap(L"friends-controller.bmp",surface.data(),Width,Height);
+    // A control becoming unavailable must not dispatch a stale join.
+    PadFocus(PadTarget::Join);testPeers[0].joinable=false;auto joined=joinCalls;
+    pad(SocialPadA);assert(padTarget==PadTarget::Friends && joinCalls==joined && opened);
+    testPeers[0].joinable=true;
+    // Request acceptance stays open. B returns to the list, then closes.
+    selected=(int)testPeers.size()-1;PadFocus(PadTarget::Friends);
+    pad(SocialPadA);assert(padTarget==PadTarget::Accept);
+    auto accepted=friendAcceptCalls;pad(SocialPadA);
+    assert(friendAcceptCalls==accepted+1 && opened && !joinPending);
+    pad(SocialPadRight);assert(padTarget==PadTarget::Decline);
+    auto declined=friendDeclineCalls;pad(SocialPadA);assert(friendDeclineCalls==declined+1);
+    pad(SocialPadB);assert(opened && padTarget==PadTarget::Friends);
+    pad(SocialPadB);SyncOpen();assert(!opened && !controllerCaptured);
+    SocialOverlayShow(0);render();selected=1;PadFocus(PadTarget::Friends);
+    pad(SocialPadA);assert(padTarget==PadTarget::Accept);
+    auto invitesAccepted=acceptCalls;titleConsumedClose=false;pad(SocialPadA);render();
+    assert(!opened && acceptCalls==invitesAccepted && !controllerCaptured);
+    titleConsumedClose=true;render();assert(acceptCalls==invitesAccepted+1);
+    // Reach the host action from the ordinary focus path; default to Cancel.
+    SocialOverlayShow(0);render();selected=0;PadFocus(PadTarget::Friends);
+    pad(SocialPadA);pad(SocialPadUp);assert(padTarget==PadTarget::Block);
+    pad(SocialPadLeft);assert(padTarget==PadTarget::Kick);
+    auto kicked=kickRequests;pad(SocialPadA);assert(confirmGuest && !padConfirmYes);
+    Paint(true,testPeers);SaveBitmap(L"friends-controller-kick.bmp",surface.data(),Width,Height);
+    pad(SocialPadA);assert(!confirmGuest && kickRequests==kicked && opened);
+    pad(SocialPadA);pad(SocialPadB);assert(!confirmGuest && opened);
+    pad(SocialPadA);pad(SocialPadRight);pad(SocialPadA);
+    assert(!opened && kickRequests==kicked+1);SyncOpen();
+    SocialOverlayShow(0);render();
+    for(int i=0;i<8;++i){SocialPeerView extra;extra.ip="198.51.100."+std::to_string(i+30);extra.name="Offline "+std::to_string(i);testPeers.push_back(extra);}
+    selected=0;PadFocus(PadTarget::Friends);
+    for(int i=0;i<7;++i)pad(SocialPadDown);
+    assert(selected==7 && page==1);
+    pad(SocialPadUp);assert(selected==6 && page==1);
+    pad(SocialPadUp);assert(selected==5 && page==0);
+    // Offline peers cannot select Join/Invite. Removal returns focus to the list.
+    pad(SocialPadA);assert(padTarget==PadTarget::Remove);
+    auto peerCount=testPeers.size();pad(SocialPadA);assert(testPeers.size()==peerCount-1 && padTarget==PadTarget::Friends);
+    selected=0;testPeers[0].relationship=SocialRelationship::Blocked;
+    testPeers[0].online=false;testPeers[0].joinable=false;
+    pad(SocialPadA);assert(padTarget==PadTarget::Block);
+    auto blocked=blockCalls;pad(SocialPadA);assert(blockCalls==blocked+1);
+    testPeers.clear();selected=-1;PadFocus(PadTarget::Friends);
+    pad(SocialPadA);assert(padTarget==PadTarget::Address && focus==1);
+    pad(SocialPadA);assert(status.find(L"keyboard")!=std::wstring::npos);
+    // Keyboard text entry remains usable after selecting the field with a pad.
+    ip.clear();WindowProc(testWindow,WM_CHAR,'1',0);Consume(testPeers);assert(ip=="1" && !padMode);
+    SocialOverlayDetach();assert(!controllerCaptured);
     testDevice->Release();d3d->Release();DestroyWindow(testWindow);
-    puts("PASS: D3D9 pixels, render-state restoration, input consumption, backend dispatch, invite toast, reset while open, and teardown");
+    puts("PASS: D3D9 rendering/state restoration, keyboard/mouse regression, controller focus/actions/paging, disabled actions, request and invite handling, deferred joins, safe kick confirmation, reset and teardown");
 }
