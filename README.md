@@ -8,7 +8,7 @@ Friends, invitations, and online co-op for the supported PC version of Fable III
 <p align="center"><strong>v2.5.1-controller.1</strong> · Windows · Two-player co-op · Powered by XLiveLessNess</p>
 
 <p align="center">
-  <a href="https://github.com/LunalFresh/Fable3-Coop/archive/refs/heads/main.zip"><strong>Download the controller update</strong></a> ·
+  <a href="https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.1-controller.1"><strong>Download v2.5.1-controller.1</strong></a> ·
   <a href="#installation">Install</a> ·
   <a href="#play-together">Play together</a> ·
   <a href="docs/NETWORKING.md">Networking</a> ·
@@ -17,6 +17,18 @@ Friends, invitations, and online co-op for the supported PC version of Fable III
 </p>
 
 ---
+
+## New in v2.5.1-controller.1
+
+The **Friends and Invitations menu now supports XInput controllers**:
+
+- **D-pad or left stick** moves through friends, pages, and available actions.
+- **A** selects; **B** goes back or closes the menu. Visible focus and Xbox-style button prompts show what will happen.
+- Controller input stays inside the open panel. Held buttons are gated until released when opening or closing it.
+- Navigation recovers after Alt+Tab or unplugging/reconnecting the controller.
+- Keyboard and mouse remain available. New names and addresses still use keyboard typing.
+
+Validated in-game. The release includes the exact tested DLL, installer, and matching source. Read the [release notes](https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.1-controller.1) or the [full controller guide](docs/CONTROLLER-CANDIDATE.md).
 
 ## Return to Albion, together
 
@@ -51,7 +63,7 @@ Use `Get-FileHash .\Fable3.exe -Algorithm SHA256` in PowerShell to compare your 
 
 ## Installation
 
-1. Download the **[current repository ZIP](https://github.com/LunalFresh/Fable3-Coop/archive/refs/heads/main.zip)** for **v2.5.1-controller.1**. It includes the tested DLL, installer, and matching source; building is not required. Extract the **entire ZIP** into a separate folder, such as Downloads. The [previous v2.5.0-beta.1 release](https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.0-beta.1) remains available.
+1. Download **[Fable3-Coop-v2.5.1-controller.1.zip](https://github.com/LunalFresh/Fable3-Coop/releases/download/v2.5.1-controller.1/Fable3-Coop-v2.5.1-controller.1.zip)** from the [release page](https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.1-controller.1). Choose this prepared ZIP from Assets; it includes the tested DLL, installer, and matching source, so building is not required. Extract the **entire ZIP** into a separate folder, such as Downloads. The [previous v2.5.0-beta.1 release](https://github.com/LunalFresh/Fable3-Coop/releases/tag/v2.5.0-beta.1) remains available.
 2. Close Fable III and its launcher. Run **Setup.cmd** from the extracted folder.
 3. Enter the folder containing **Fable3.exe**. On a fresh installation, choose a player name different from your friend's. Existing XLLN profiles and settings are preserved.
 4. If peer access is not already configured, follow the [network setup](docs/NETWORKING.md).
